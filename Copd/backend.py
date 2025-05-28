@@ -7,7 +7,8 @@ app = Flask(__name__, static_folder='static')
 CORS(app)
 
 # Load Excel safely
-DATA_PATH = "prs_data.xlsx"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))  # Directory of backend.py
+DATA_PATH = os.path.join(BASE_DIR, "prs_data.xlsx")
 
 if not os.path.exists(DATA_PATH):
     raise FileNotFoundError(f"Required data file '{DATA_PATH}' not found.")
